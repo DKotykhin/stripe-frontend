@@ -19,8 +19,6 @@ const Header: React.FC = () => {
                         alt="logo Coffeedoor"
                         width={25}
                         height={25}
-                        blurDataURL={"/webp/logo_192x192.webp"}
-                        placeholder={'blur'}
                     />
                 </Link>
                 <Typography className={styles.header__logoText}>

@@ -6,7 +6,7 @@ export const generalMetaData: Metadata = {
     authors: [
         {
             name: "Dmytro Kotykhin",
-            url: "https://dmytro-kotykhin.space",
+            url: "https://stripe-frontend-six.vercel.app",
         },
     ],
 };
@@ -19,7 +19,7 @@ export const mainPageMetaData: Metadata = {
     metadataBase: new URL("https://i.ibb.co"),
     openGraph: {
         type: "website",
-        url: "https://www.coffeedoor.space",
+        url: "https://stripe-frontend-six.vercel.app",
         title: "CoffeeDoor - brewbar & coffeeshop",
         description:
             "CoffeeDOOR – cozy brewbar & coffeeshop. Easy to test the favorite taste of coffee",
