@@ -61,7 +61,7 @@ const ItemCard: React.FC<IItemCard> = ({ item }) => {
                     className={styles.button__basket}
                 onClick={() =>
                     basketClick({
-                        _id,
+                        id: _id,
                         itemName,
                         price,
                         weight,

@@ -1,5 +1,5 @@
 export interface IBasket {
-    _id: string;
+    id: string;
     itemName: string;
     price: number;
     quantity: number;
