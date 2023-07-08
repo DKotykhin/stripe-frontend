@@ -1,0 +1,17 @@
+.first {
+    text-align: center;
+    .first__image {
+        margin: 50px 0;
+        width: 90%;
+        height: auto;
+        cursor: pointer;
+    }
+    .first__title {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 30px;
+        @media (max-width: 768px) {
+            font-size: 20px;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+@import "constants/constants.scss";
+
+.footer {
+    background-color: $color_mint;
+    height: 64px;
+    .footer__container {
+        height: 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .footer__right {
+            color: #fff;
+            margin-right: 10px;
+        }
+        .footer__logo {
+            text-align: right;
+            font-size: 25px;
+            font-weight: 700;
+            font-family: monospace;
+            color: #fff;
+        }
+    }
+}
