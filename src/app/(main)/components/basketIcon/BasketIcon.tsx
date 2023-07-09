@@ -7,7 +7,7 @@ import { Box, Badge } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 
-import { useBasketStore } from "../../basketStore";
+import { useBasketStore } from "../../../../store/basketStore";
 
 import styles from "./basketIcon.module.scss";
 

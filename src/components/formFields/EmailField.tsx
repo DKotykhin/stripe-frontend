@@ -22,7 +22,7 @@ const EmailField: React.FC<IEmailField> = ({ label, placeholder, error, control 
     return (
         <Box className={styles.field}>
             <InputLabel>{label}</InputLabel>
-            <FormControl>
+            <FormControl className={styles.field__control}>
                 <Controller
                     name="email"
                     control={control}

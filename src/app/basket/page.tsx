@@ -1,8 +1,13 @@
 import React from 'react';
+import BasketItems from './components/basketItems/BasketItems';
+import NavButtons from './components/navButtons/NavButtons';
 
 const BasketPage: React.FC = () => {
     return (
-        <div>Basket page</div>
+        <>
+            <BasketItems />
+            <NavButtons />
+        </>
     );
 };
 

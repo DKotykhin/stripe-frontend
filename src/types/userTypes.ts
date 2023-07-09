@@ -27,3 +27,8 @@ export interface IUserResponse {
     token: string;
     message: string;
 }
+
+export interface ILoginByTokenResponse {
+    user: IUser;
+    message: string;
+}

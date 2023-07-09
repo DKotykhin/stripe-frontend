@@ -7,23 +7,15 @@ import { useRouter } from "next/navigation";
 
 import { Button, Container, Typography, Box, Avatar, Paper } from "@mui/material";
 import { InputLabel, Checkbox } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import { EmailField, PasswordField } from 'components/formFields/_index';
 import { LoginFormValidation } from 'validation/UserValidation';
+import { userLogin } from 'service/userService';
+import { theme, ThemeProvider } from 'utils/colorTheme';
 
 import { IUserLoginForm } from 'types/userTypes';
 
-import styles from "./form.module.scss";
-import { userLogin } from 'service/userService';
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: "#00a1b6",
-        },
-    },
-});
+import styles from "./loginForm.module.scss";
 
 const LoginForm: React.FC = () => {
 
@@ -107,7 +99,7 @@ const LoginForm: React.FC = () => {
                 <Button
                     className={styles.form__sign_button}
                     component={Link}
-                    href="/registration"
+                    href="/register"
                 >
                     {"Registration"}
                 </Button>

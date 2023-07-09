@@ -1,0 +1,63 @@
+@import "constants/constants.scss";
+
+.basket {   
+    .basket__title {
+        font-size: 22px;
+        font-weight: 500;
+        margin: 30px 0;
+    }    
+    .basket__box {
+        .basket__itemBlock {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            img {
+                margin: 8px 16px 0 0;
+            }
+            .basket__nameBlock {
+                display: flex;
+                justify-content: space-between;
+                .basket__itemName {
+                    font-size: 19px;
+                    font-weight: 500;
+                    margin: 8px 8px 8px 0;
+                }
+                .basket__removeItem {
+                    margin-top: 10px;
+                    color: $color_lightGrey;
+                    cursor: pointer;
+                    &:hover {
+                        color: #000;
+                    }
+                }
+            }
+            .basket__price {
+                display: flex;
+                .basket__quantityIcons {
+                    color: $color_mint;
+                    vertical-align: bottom;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    &:hover {
+                        color: #fff;
+                        background-color: $color_mint;
+                        transition: 0.5s all;
+                    }
+                }
+            }
+        }
+    }
+    .basket__subtitle {
+        text-align: center;
+        font-size: 20px;
+        margin-top: 20px;
+    }
+    .basket__total {
+        font-size: 20px;
+        font-weight: 500;
+        text-align: right;
+        margin: 16px 0;
+    }
+}

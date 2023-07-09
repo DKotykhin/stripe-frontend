@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Typography, Button, Box, CardActions } from "@mui/material";
 import { Card, CardContent } from "@mui/material";
 
-import { useBasketStore } from "../../basketStore";
+import { useBasketStore } from "store/basketStore";
 
 import { IStoreItem } from "types/storeTypes";
 import { IBasket } from "types/basketTypes";
