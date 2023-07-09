@@ -8,6 +8,7 @@ import CatalogList from './components/catalog/CatalogList';
 import { getStoreItem } from 'service/getStoreItem';
 
 import { IStoreItem } from 'types/storeTypes';
+import BasketIcon from './components/basketIcon/BasketIcon';
 
 export const metadata: Metadata = mainPageMetaData;
 
@@ -19,6 +20,7 @@ const Home: React.FC = async () => {
         <main>
             <FirstBlock />
             <CatalogList data={data} />
+            <BasketIcon />
         </main>
     );
 };

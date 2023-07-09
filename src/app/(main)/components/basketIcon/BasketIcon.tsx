@@ -1,10 +1,13 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation";
 
 import { Box, Badge } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 
-import { useBasketStore } from "../../store";
+import { useBasketStore } from "../../basketStore";
 
 import styles from "./basketIcon.module.scss";
 
@@ -17,18 +20,17 @@ const StyledBadge = styled(Badge)`
     }
 `;
 
-interface IBasketIcon {
-    handleOpen: () => void
-}
+const BasketIcon: React.FC = () => {
 
-const BasketIcon: React.FC<IBasketIcon> = ({ handleOpen }) => {
-
+    const router = useRouter();
     const basketData = useBasketStore(state => state.basketData);
 
     const totalQuantity = basketData.reduce(
         (sum: number, currentValue: { price: number; quantity: number; }) => sum + currentValue.quantity,
         0
     );
+
+    const handleOpen = () => router.push("/basket");
 
     return basketData.length > 0 ? (
         <Box className={styles.basketIcon} onClick={handleOpen}>

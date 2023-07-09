@@ -8,13 +8,13 @@ export interface IBasket {
 }
 
 export interface IFormData {
-    name: string;
-    phone: string;
-    text: string;
+    userName: string;
+    email: string;
     delivery: string;
+    address: string;
 }
 
 export interface ITelegramData {
     formData: IFormData;
-    basketData: IBasket[]
+    basketData: IBasket[];
 }

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Typography, Button, Box, CardActions } from "@mui/material";
 import { Card, CardContent } from "@mui/material";
 
-import { useBasketStore } from "../../store";
+import { useBasketStore } from "../../basketStore";
 
 import { IStoreItem } from "types/storeTypes";
 import { IBasket } from "types/basketTypes";
@@ -19,7 +19,7 @@ const ItemCard: React.FC<IItemCard> = ({ item }) => {
 
     const { _id, itemName, price, description, image, tm, country, weight } = item;
 
-    const imageURL = process.env.NEXT_PUBLIC_BACKEND_URL + '/api' + image;
+    const imageURL = process.env.NEXT_PUBLIC_BACKEND_URL + image;
 
     const addItem = useBasketStore(state => state.addItem);
     const basketClick = (data: IBasket) => addItem(data);

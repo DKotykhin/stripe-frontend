@@ -3,7 +3,7 @@ import { IStoreItem } from "types/storeTypes";
 const BACKEND_API = process.env.NEXT_PUBLIC_BACKEND_URL || "";
 
 export const getStoreItem = async (): Promise<IStoreItem[]> => {
-    const res = await fetch(BACKEND_API + '/api/store');
+    const res = await fetch(BACKEND_API + '/store');
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
