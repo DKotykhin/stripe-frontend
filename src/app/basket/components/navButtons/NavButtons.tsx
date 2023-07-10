@@ -26,7 +26,7 @@ const NavButtons: React.FC = () => {
                     Continue shopping
                 </Button>
                 {user ?
-                    <BasketForm />
+                    <BasketForm user={user}/>
                     :
                     <Button
                         className={styles.navButtons__login}

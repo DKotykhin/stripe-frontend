@@ -1,15 +1,19 @@
 import React from 'react';
 import { format } from "date-fns";
+import { useRouter } from "next/navigation";
 
-import { Table, TableContainer, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Table, TableContainer, TableBody, TableCell, TableHead, TableRow, Button, Box } from '@mui/material';
 import { Paper } from '@mui/material';
 
 import { IBasket } from 'types/basketTypes';
 import { IUserOrder } from 'types/orderTypes';
+import { paymentRefund } from 'service/paymentService';
 
 const OrderTable: React.FC<{ orders: IUserOrder }> = ({ orders }) => {
 
-    const { orderData, orderSum, createdAt, orderQuantity } = orders;
+    const { orderData, orderSum, createdAt, orderQuantity, _id, refund } = orders;
+
+    const router = useRouter();
 
     const rows = orderData?.map((item: IBasket) => {
         return {
@@ -19,6 +23,22 @@ const OrderTable: React.FC<{ orders: IUserOrder }> = ({ orders }) => {
             sum: item.price * item.quantity,
         };
     });
+
+    const orderClick = async (data: { _id: string, orderSum: number }) => {
+        const validData = {
+            orderId: data._id,
+            amount: data.orderSum,
+        };
+        console.log(validData);
+        const localToken = localStorage.getItem("rememberMe");
+        const sessionToken = sessionStorage.getItem("rememberMe");
+        const token = localToken || sessionToken || "";
+        await paymentRefund(validData, token)
+            .then(result => {
+                if (result.refund.status === 'succeeded') router.push("/refund");
+            })
+            .catch(err => console.log(err));
+    };
 
     return (
         <TableContainer component={Paper} sx={{ my: 3 }}>
@@ -49,7 +69,18 @@ const OrderTable: React.FC<{ orders: IUserOrder }> = ({ orders }) => {
                         <TableCell>{"Order date: "} {format(new Date(createdAt), "dd'.'LL'.'yyyy")}</TableCell>
                         <TableCell sx={{ fontWeight: 700 }}>{"Total"}</TableCell>
                         <TableCell align="center" sx={{ fontWeight: 700 }}>{orderQuantity}</TableCell>
-                        <TableCell align="center" sx={{ fontWeight: 700 }}>{orderSum}</TableCell>
+                        <TableCell align="center" sx={refund?.status ? { color: '#ff0000', fontWeight: 700 } : { fontWeight: 700 }}>
+                            {refund?.status ? (orderSum - refund.amount) : orderSum}
+                            <Box>
+                                <Button
+                                    size="small"
+                                    disabled={refund?.status}
+                                    onClick={() => orderClick({ _id, orderSum })}
+                                >
+                                    {refund?.status ? 'Refunded' : 'Refund'}
+                                </Button>
+                            </Box>
+                        </TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

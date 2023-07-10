@@ -27,16 +27,15 @@ const OrderTab: React.FC = () => {
 
     return orders ? (
         <>
-            <Typography>{"Order list"}</Typography>
             {orders.orders.length
                 ?
                 <>
-                    {orders.orders.map(order => (
-                        <OrderTable key={order._id} orders={order} />
-                    ))}
                     <Typography>{"Total orders: "} {orders.statistic.totalCount}</Typography>
                     <Typography>{"Total sum: "} {'$'}{orders.statistic.totalSum}</Typography>
                     <Typography>{"Average sum: "} {'$'}{orders.statistic.averageSum}</Typography>
+                    {orders.orders.map(order => (
+                        <OrderTable key={order._id} orders={order} />
+                    ))}
                 </>
                 :
                 <Typography>{"You don't have any order yet"}</Typography>

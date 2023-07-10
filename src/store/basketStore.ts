@@ -16,7 +16,7 @@ export const useBasketStore = create<BasketStore>()((set) => ({
     addItem: (newItem: IBasket) =>
         set((state) => {
             const itemIndex = state.basketData.findIndex(
-                (item) => item.id === newItem.id
+                (item) => item.itemId === newItem.itemId
             );
             if (itemIndex < 0) {
                 return { basketData: [...state.basketData, newItem] };
@@ -34,12 +34,12 @@ export const useBasketStore = create<BasketStore>()((set) => ({
         }),
     removeItem: (id: string) =>
         set((state) => ({
-            basketData: state.basketData.filter((item) => item.id !== id),
+            basketData: state.basketData.filter((item) => item.itemId !== id),
         })),
     quantityDec: (id: string) =>
         set((state) => ({
             basketData: state.basketData.map((item) =>
-                item.id === id
+                item.itemId === id
                     ? {
                           ...item,
                           quantity:
@@ -53,7 +53,7 @@ export const useBasketStore = create<BasketStore>()((set) => ({
     quantityInc: (id: string) =>
         set((state) => ({
             basketData: state.basketData.map((item) =>
-                item.id === id
+                item.itemId === id
                     ? {
                           ...item,
                           quantity: (item.quantity += 1),

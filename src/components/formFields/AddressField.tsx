@@ -23,18 +23,19 @@ const AddressField: React.FC<IAddressField> = ({ label, placeholder, error, cont
             <InputLabel>{label}</InputLabel>
             <FormControl className={styles.field__control}>
                 <Controller
-                    name="address"
+                    name={label.toLowerCase()}
                     control={control}
                     render={({ field }) => (
                         <OutlinedInput
                             {...field}
                             type="text"
+                            multiline
                             placeholder={placeholder}
                             error={error ? true : false}
                         />
                     )}
                 />
-                <FormHelperText>{error?.message}</FormHelperText>
+                <FormHelperText className={styles.field__helper}>{error?.message}</FormHelperText>
             </FormControl>
         </Box>
     );

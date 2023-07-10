@@ -36,7 +36,7 @@ const NameField: React.FC<INameField> = ({ label, placeholder, error, control })
                         />
                     )}
                 />
-                <FormHelperText>{error?.message}</FormHelperText>
+                <FormHelperText className={styles.field__helper}>{error?.message}</FormHelperText>
             </FormControl>
         </Box>
     );

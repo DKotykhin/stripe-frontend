@@ -36,3 +36,29 @@ export const cancelPageMetaData: Metadata = {
     title: "Payment cancelled",
     description: "Payment cancelled page",
 };
+
+export const loginPageMetaData: Metadata = {
+    title: "Login",
+    description: "Login page",
+};
+
+export const registerPageMetaData: Metadata = {
+    title: "Registration",
+    description: "Registration page",
+};
+
+export const basketPageMetaData: Metadata = {
+    title: "Basket",
+    description: "Basket page",
+};
+
+export const personalPageMetaData: Metadata = {
+    title: "Account",
+    description: "Account page",
+};
+
+export const refundPageMetaData: Metadata = {
+    title: "Refund",
+    description: "Refund page",
+};
+

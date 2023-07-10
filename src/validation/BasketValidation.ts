@@ -1,22 +1,17 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { userName, address, email, delivery } from "./_validationTypes";
+import { userName, address, email, deliveryWay, comment } from "./_validationTypes";
 
 const schema = yup.object({
     userName,
     email,
-    delivery,
+    deliveryWay,
     address,
+    comment,
 });
 
-export const BasketValidation: Object = {
-    defaultValues: {
-        userName: "",
-        email: "",
-        delivery: "",
-        address: "",
-    },
+export const BasketValidation: Object = {   
     resolver: yupResolver(schema),
     mode: "onBlur",
 };

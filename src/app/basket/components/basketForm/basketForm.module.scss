@@ -1,0 +1,23 @@
+@import 'constants/constants.scss';
+
+.form {  
+    .submitbutton {
+        @include button;
+        display: block;
+        margin: 30px auto;
+        padding: 10px;
+        width: 220px;
+        color: #fff;
+        border: 1px solid $color_mint;
+        background-color: $color_mint;
+        &:hover {
+            color: black;
+            background-color: #fff;
+        }
+        &:disabled {
+            color: $color_lightGrey;
+            border: 1px solid $color_lightGrey;
+            background-color: #fff;
+        }
+    }
+}

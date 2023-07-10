@@ -18,7 +18,7 @@ const DeliveryField: React.FC<IDeliveryField> = ({ label, error, control }) => {
             <InputLabel>{label}</InputLabel>
             <FormControl className={styles.field__control}>
                 <Controller
-                    name="delivery"
+                    name="deliveryWay"
                     control={control}
                     render={({ field }) => (
                         <RadioGroup {...field}>
@@ -36,7 +36,7 @@ const DeliveryField: React.FC<IDeliveryField> = ({ label, error, control }) => {
 
                     )}
                 />
-                <FormHelperText>{error?.message}</FormHelperText>
+                <FormHelperText className={styles.field__helper}>{error?.message}</FormHelperText>
             </FormControl>
         </Box>
     );

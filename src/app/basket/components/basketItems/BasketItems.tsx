@@ -59,7 +59,7 @@ const BasketItems: React.FC = () => {
                                     <CloseIcon
                                         className={styles.basket__removeItem}
                                         onClick={() =>
-                                            handleRemove(item.id)
+                                            handleRemove(item.itemId)
                                         }
                                     />
                                 </Box>
@@ -67,14 +67,14 @@ const BasketItems: React.FC = () => {
                                     <RemoveCircleOutlineIcon
                                         className={styles.basket__quantityIcons}
                                         onClick={() =>
-                                            handleDecrement(item.id)
+                                            handleDecrement(item.itemId)
                                         }
                                     />{" "}
                                     {item.quantity}{" "}
                                     <AddCircleOutlineIcon
                                         className={styles.basket__quantityIcons}
                                         onClick={() =>
-                                            handleIncrement(item.id)
+                                            handleIncrement(item.itemId)
                                         }
                                     />
                                     {" x "}

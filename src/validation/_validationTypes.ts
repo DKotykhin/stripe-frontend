@@ -17,9 +17,11 @@ export const password = yup
     .required("Required field!")
     .min(8, "Enter at least 8 characters!");
 
-export const delivery = yup.string().required("Choose delivery way");
+export const deliveryWay = yup.string().required("Choose delivery way");
 
 export const address = yup
     .string()
     .max(200, "Enter maximum 200 characters")
     .required("Required field!");
+
+export const comment = yup.string().max(200, "Enter maximum 200 characters");

@@ -1,0 +1,24 @@
+.thanks {
+    text-align: center;
+    .thanks__image {
+        margin: 80px 0;
+        width: 90%;
+        height: auto;
+        cursor: pointer;
+    }
+    .thanks__title {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 30px;
+        @media (max-width: 768px) {
+            font-size: 20px;
+        }
+    }
+    .thanks__subtitle {
+        margin-bottom: 100px;
+        font-size: 20px;
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
+    }
+}
