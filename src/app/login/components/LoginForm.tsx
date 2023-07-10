@@ -82,7 +82,7 @@ const LoginForm: React.FC = () => {
                             <Controller
                                 name="rememberMe"
                                 control={control}
-                                render={({ field }) => <Checkbox {...field} />}
+                                render={({ field }) => <Checkbox {...field} sx={{ marginTop: '-3px' }} />}
                                 defaultValue={false}
                             />
                             Remember me

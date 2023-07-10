@@ -14,8 +14,10 @@
     }
 }
 .button {
-    text-align: center;
-    display: block;
-    width: 200px;
-    margin: 30px auto;
+    .button__login {
+        text-align: center;
+        display: block;
+        width: 200px;
+        margin: 30px auto;
+    }
 }

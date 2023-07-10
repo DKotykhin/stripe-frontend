@@ -3,7 +3,7 @@ import React from 'react';
 import { format } from "date-fns";
 import Link from "next/link";
 
-import { Button, Container, Paper, Typography } from '@mui/material';
+import { Button, Container, Paper, Typography, Box } from '@mui/material';
 
 import { useAuth } from 'hooks/useAuth';
 
@@ -26,14 +26,16 @@ const InfoTab: React.FC = () => {
             </Paper>
         </Container>
     ) :
-        <Button
-            className={styles.button}
-            component={Link}
-            variant='contained'
-            href="/login"
-        >
-            Login
-        </Button>;
+        <Box className={styles.button}> 
+            <Button
+                className={styles.button__login}
+                component={Link}
+                variant='contained'
+                href="/login"
+            >
+                Login
+            </Button>
+        </Box>;
 };
 
 export default InfoTab;
