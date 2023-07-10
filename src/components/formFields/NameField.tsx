@@ -14,11 +14,12 @@ import styles from './field.module.scss';
 interface INameField {
     label: string;
     placeholder: string;
+    defaultValue?: string;
     error?: FieldError;
     control: Control<any>;
 }
 
-const NameField: React.FC<INameField> = ({ label, placeholder, error, control }) => {
+const NameField: React.FC<INameField> = ({ label, placeholder, error, control, defaultValue }) => {
     return (
         <Box className={styles.field}>
             <InputLabel>{label}</InputLabel>
@@ -33,6 +34,8 @@ const NameField: React.FC<INameField> = ({ label, placeholder, error, control })
                             placeholder={placeholder}
                             autoComplete="name"
                             error={error ? true : false}
+                            defaultValue={defaultValue}
+                            disabled={Boolean(defaultValue)}
                         />
                     )}
                 />

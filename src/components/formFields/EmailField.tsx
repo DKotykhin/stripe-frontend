@@ -14,11 +14,12 @@ import styles from './field.module.scss';
 interface IEmailField {
     label: string;
     placeholder: string;
+    defaultValue?: string;
     error?: FieldError;
     control: Control<any>;
 }
 
-const EmailField: React.FC<IEmailField> = ({ label, placeholder, error, control }) => {
+const EmailField: React.FC<IEmailField> = ({ label, placeholder, error, control, defaultValue }) => {
     return (
         <Box className={styles.field}>
             <InputLabel>{label}</InputLabel>
@@ -33,6 +34,8 @@ const EmailField: React.FC<IEmailField> = ({ label, placeholder, error, control 
                             placeholder={placeholder}
                             autoComplete="email"
                             error={error ? true : false}
+                            defaultValue={defaultValue}
+                            disabled={Boolean(defaultValue)}
                         />
                     )}
                 />

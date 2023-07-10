@@ -7,6 +7,7 @@ import { userOrders } from 'service/userService';
 import { IUserOrderResponse } from 'types/orderTypes';
 import Spinner from 'components/spinner/Spinner';
 import OrderTable from './OrderTable';
+import { getToken } from 'utils/getToken';
 
 const OrderTab: React.FC = () => {
 
@@ -15,9 +16,7 @@ const OrderTab: React.FC = () => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const localToken = localStorage.getItem("rememberMe");
-            const sessionToken = sessionStorage.getItem("rememberMe");
-            const token = localToken || sessionToken || "";
+            const token = getToken();
             if (!token) router.push("/login");
             userOrders(token)
                 .then(data => setOrders(data))

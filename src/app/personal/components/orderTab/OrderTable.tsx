@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { format } from "date-fns";
 import { useRouter } from "next/navigation";
 
@@ -8,11 +8,13 @@ import { Paper } from '@mui/material';
 import { IBasket } from 'types/basketTypes';
 import { IUserOrder } from 'types/orderTypes';
 import { paymentRefund } from 'service/paymentService';
+import { getToken } from 'utils/getToken';
 
 const OrderTable: React.FC<{ orders: IUserOrder }> = ({ orders }) => {
 
     const { orderData, orderSum, createdAt, orderQuantity, _id, refund } = orders;
 
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const rows = orderData?.map((item: IBasket) => {
@@ -29,15 +31,15 @@ const OrderTable: React.FC<{ orders: IUserOrder }> = ({ orders }) => {
             orderId: data._id,
             amount: data.orderSum,
         };
-        console.log(validData);
-        const localToken = localStorage.getItem("rememberMe");
-        const sessionToken = sessionStorage.getItem("rememberMe");
-        const token = localToken || sessionToken || "";
+        // console.log(validData);
+        setLoading(true);
+        const token = getToken();
         await paymentRefund(validData, token)
             .then(result => {
                 if (result.refund.status === 'succeeded') router.push("/refund");
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
+            .finally(() => setLoading(false));
     };
 
     return (
@@ -77,7 +79,7 @@ const OrderTable: React.FC<{ orders: IUserOrder }> = ({ orders }) => {
                                     disabled={refund?.status}
                                     onClick={() => orderClick({ _id, orderSum })}
                                 >
-                                    {refund?.status ? 'Refunded' : 'Refund'}
+                                    {refund?.status ? loading ? 'Loading...' : 'Refunded' : 'Refund'}
                                 </Button>
                             </Box>
                         </TableCell>

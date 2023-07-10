@@ -8,14 +8,15 @@ import { BasketValidation } from 'validation/BasketValidation';
 import { NameField, EmailField, DeliveryField, AddressField } from 'components/formFields/_index';
 
 import { useBasketStore } from 'store/basketStore';
+import { paymentIntent } from 'service/paymentService';
+import { getToken } from 'utils/getToken';
 
-import { IUser } from 'types/userTypes';
 import { IFormData, ISendData } from 'types/basketTypes';
+import { IUser } from 'types/userTypes';
 
 import styles from './basketForm.module.scss';
-import { paymentIntent } from 'service/paymentService';
 
-const BasketForm: React.FC<{ user: IUser }> = ({ user }) => {
+const BasketForm: React.FC<{user: IUser}> = ({user}) => {
 
     const basketData = useBasketStore(state => state.basketData);
     const router = useRouter();
@@ -26,9 +27,9 @@ const BasketForm: React.FC<{ user: IUser }> = ({ user }) => {
         formState: { errors, isValid },
     } = useForm<IFormData>({
         ...BasketValidation,
-        defaultValues: {
-            userName: user ? user.userName : '',
-            email: user ? user.email : '',
+        defaultValues: { 
+            userName: user.userName,
+            email: user.email,           
             deliveryWay: "",
             address: "",
             comment: "",
@@ -45,16 +46,14 @@ const BasketForm: React.FC<{ user: IUser }> = ({ user }) => {
             },
             orderData: basketData,
         };
-        console.log(validData);
-        const localToken = localStorage.getItem("rememberMe");
-        const sessionToken = sessionStorage.getItem("rememberMe");
-        const token = localToken || sessionToken || "";
+        // console.log(validData);
+        const token = getToken();
         await paymentIntent(validData, token)
             .then(result => router.push(result.url))
             .catch(err => console.log(err));
     };
 
-    return (
+    return user ? (
         <Container maxWidth='sm'>
             <Box
                 onSubmit={handleSubmit(onSubmit)}
@@ -101,7 +100,7 @@ const BasketForm: React.FC<{ user: IUser }> = ({ user }) => {
                 </Button>
             </Box>
         </Container>
-    );
+    ) : null;
 };
 
 export default BasketForm;

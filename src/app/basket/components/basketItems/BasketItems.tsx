@@ -27,6 +27,14 @@ const BasketItems: React.FC = () => {
     const handleDecrement = (id: string): void => quantityDec(id);
     const handleIncrement = (id: string): void => quantityInc(id);
 
+    const sum = basketData.reduce(
+        (sum: number, currentValue: { price: number; quantity: number; }) =>
+            sum +
+            +currentValue.price * currentValue.quantity,
+        0
+    );
+    const validSum = Math.round(sum * 100) / 100;
+
     return (
         <Container maxWidth='md' className={styles.basket}>
             <Typography
@@ -94,12 +102,7 @@ const BasketItems: React.FC = () => {
             )}
             <Typography className={styles.basket__total}>
                 {"Total: "}{'$'}
-                {basketData.reduce(
-                    (sum: number, currentValue: { price: number; quantity: number; }) =>
-                        sum +
-                        +currentValue.price * currentValue.quantity,
-                    0
-                )}                
+                {validSum}                
             </Typography>
         </Container>
     );

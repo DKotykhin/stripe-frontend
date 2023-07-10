@@ -16,11 +16,14 @@ import { theme, ThemeProvider } from 'utils/colorTheme';
 import { IUserLoginForm } from 'types/userTypes';
 
 import styles from "./loginForm.module.scss";
+import { useUserStore } from 'store/userStore';
 
 const LoginForm: React.FC = () => {
 
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+
+    const { addUser } = useUserStore();
 
     const {
         control,
@@ -36,10 +39,10 @@ const LoginForm: React.FC = () => {
             password: password.trim(),
         };
         setLoading(true);
-        // console.log(validData);
         await userLogin(validData)
             .then(response => {
-                console.log(response);
+                // console.log(response);
+                addUser(response.user);
                 if (response.token) {
                     sessionStorage.setItem("rememberMe", response.token);
                     if (rememberMe) localStorage.setItem("rememberMe", response.token);

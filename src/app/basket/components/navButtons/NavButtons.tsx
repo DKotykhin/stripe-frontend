@@ -21,6 +21,7 @@ const NavButtons: React.FC = () => {
                 <Button
                     className={styles.navButtons__return}
                     component={Link}
+                    variant='outlined'
                     href="/"
                 >
                     Continue shopping
@@ -31,8 +32,8 @@ const NavButtons: React.FC = () => {
                     <Button
                         className={styles.navButtons__login}
                         component={Link}
+                        variant='contained'
                         href="/login"
-                        variant='outlined'
                     >
                         Login
                     </Button>

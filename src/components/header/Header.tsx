@@ -9,13 +9,22 @@ import { Box, AppBar, Toolbar, Typography, Button } from '@mui/material';
 import { theme, ThemeProvider } from 'utils/colorTheme';
 
 import styles from './header.module.scss';
+import { useUserStore } from 'store/userStore';
 
 const Header: React.FC = () => {
 
     const router = useRouter();
+    const { userData, setEmpty } = useUserStore();
 
     const accountClick = () => router.push('/personal');
-    const loginClick = () => router.push('/login');
+    const loginClick = () => {
+        if (userData._id) {
+            sessionStorage.removeItem("rememberMe");
+            localStorage.removeItem("rememberMe");
+            setEmpty();
+            router.push('/');
+        } else router.push('/login');
+    };
 
     return (
         <ThemeProvider theme={theme}>
@@ -43,7 +52,7 @@ const Header: React.FC = () => {
                             color="inherit"
                             onClick={loginClick}
                         >
-                            Login
+                            {userData._id ? 'Logout' : 'Login'}
                         </Button>
                     </Toolbar>
                 </AppBar>

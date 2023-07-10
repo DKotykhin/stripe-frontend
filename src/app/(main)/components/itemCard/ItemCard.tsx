@@ -17,7 +17,7 @@ interface IItemCard {
 
 const ItemCard: React.FC<IItemCard> = ({ item }) => {
 
-    const { _id, itemName, price, description, image, tm, country, weight } = item;
+    const { _id, itemName, price, description, image, country, weight } = item;
 
     const imageURL = process.env.NEXT_PUBLIC_BACKEND_URL + image;
 
@@ -51,24 +51,27 @@ const ItemCard: React.FC<IItemCard> = ({ item }) => {
                 <Box className={styles.card__boxItems}>
                     {weight &&
                         <Typography className={styles.card__sort}>
-                            {`Weight ${weight} g`}
+                            {`Weight: ${weight} g`}
                         </Typography>
                     }
+                    <Typography className={styles.card__sort}>
+                        {`Country: ${country}`}
+                    </Typography>
                 </Box>
             </CardContent>
             <CardActions className={styles.card__buttons}>
                 <Button
                     className={styles.button__basket}
-                onClick={() =>
-                    basketClick({
-                        itemId: _id,
-                        itemName,
-                        price,
-                        weight,
-                        image,
-                        quantity: 1,
-                    })
-                }
+                    onClick={() =>
+                        basketClick({
+                            itemId: _id,
+                            itemName,
+                            price,
+                            weight,
+                            image,
+                            quantity: 1,
+                        })
+                    }
                 >
                     {'Add to cart'}
                 </Button>

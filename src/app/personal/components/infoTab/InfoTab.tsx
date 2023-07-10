@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { format } from "date-fns";
+import Link from "next/link";
 
-import { Container, Paper, Typography } from '@mui/material';
+import { Button, Container, Paper, Typography } from '@mui/material';
 
-import Spinner from 'components/spinner/Spinner';
 import { useAuth } from 'hooks/useAuth';
 
 import styles from './infoTab.module.scss';
@@ -25,7 +25,15 @@ const InfoTab: React.FC = () => {
                 </Typography>
             </Paper>
         </Container>
-    ) : <Spinner />;
+    ) :
+        <Button
+            className={styles.button}
+            component={Link}
+            variant='contained'
+            href="/login"
+        >
+            Login
+        </Button>;
 };
 
 export default InfoTab;
